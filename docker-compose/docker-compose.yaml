@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  axonserver:
+    image: axoniq/axonserver:4.4.10
+    hostname: axonserver
+    volumes:
+      - ./data:/data
+      - ./events:/eventdata
+      - ./config:/config:ro
+    ports:
+      - '8024:8024'
+      - '8124:8124'
+      - '8224:8224'
+    networks:
+      - axoniq
+
+networks:
+  axoniq:
+    name: axoniq
